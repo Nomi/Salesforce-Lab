@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DiscountExpNotNullWhenDiscountNotNull</fullName>
+    <active>false</active>
+    <description>DiscountExpNotNullWhenDiscountNotNull</description>
+    <errorConditionFormula>AND(
+NOT(ISNULL( Discount__c )),
+ISNULL( Discount_Expiration_Date__c )
+)</errorConditionFormula>
+    <errorDisplayField>Discount_Expiration_Date__c</errorDisplayField>
+    <errorMessage>Discount expiration cannot be blank if Discount % is filled.</errorMessage>
+</ValidationRule>

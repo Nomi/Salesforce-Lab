@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MissingSome_AuditStageReq</fullName>
+    <active>false</active>
+    <errorConditionFormula>OR(
+And(
+ISPICKVAL( StageName , &quot;Price Negotiation&quot;),
+ISNULL( Amount )
+),
+And(
+ISPICKVAL( StageName , &quot;Closed Lost&quot;),
+ISBLANK(TEXT( Lost_Reason__c ))
+),
+And(
+ISPICKVAL( StageName , &quot;Price Negotiation&quot;),
+ISBLANK(TEXT( Lost_Reason__c ))
+)
+)</errorConditionFormula>
+    <errorDisplayField>StageName</errorDisplayField>
+    <errorMessage>ERROR: PLEASE PICK REQUIRED FIELDS!</errorMessage>
+</ValidationRule>

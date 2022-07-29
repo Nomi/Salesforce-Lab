@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MailingAddressProper</fullName>
+    <active>false</active>
+    <description>Any Contact records cannot be saved if street, city, and country mailing address fields are not populated.</description>
+    <errorConditionFormula>OR(
+ISNULL( MailingAddress),
+ISNULL( MailingStreet ),
+ISNULL( MailingCity ),
+ISNULL(  MailingCountry  )
+)</errorConditionFormula>
+    <errorMessage>Contact data is not completed. Please make sure that Street, City and Country fields are not blank</errorMessage>
+</ValidationRule>

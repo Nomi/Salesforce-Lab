@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ContactHasPhoneAndEmail</fullName>
+    <active>false</active>
+    <description>Contact has Phone and Email</description>
+    <errorConditionFormula>OR(
+ISNULL( Phone ),
+ISNULL( Email )
+)</errorConditionFormula>
+    <errorMessage>Missing Phone OR/AND Email.</errorMessage>
+</ValidationRule>
