@@ -1,0 +1,20 @@
+<!--
+ - Created by nnoman on 08.07.2022.
+ -->
+<!--you have to make this available on homepage editor using implements="forceCommunity:availableForAllPageTypes" (and??? access="global"??)-->
+<aura:component description="WebinarCreator" implements="flexipage:availableForAllPageTypes" access="public">
+    <aura:registerEvent name="webinarCreatedEv" type="c:WebinarCreated"/>
+    <lightning:card title="New Webinar">
+        <lightning:recordEditForm objectApiName="Webinar__c" onsuccess="{!c.onSuccessfulSubmit}">
+            <lightning:messages />
+            <lightning:inputField fieldName="Name"/>
+            <lightning:inputField fieldName="Cost__c"/>
+            <lightning:inputField fieldName="Total_Number_of_Seats__c"/>
+            <lightning:inputField fieldName="Status" value="New" />
+            <div class="slds-m-top_medium">
+                <lightning:button type="reset" label="Reset"/>
+                <lightning:button type="submit" label="Add"/>
+            </div>
+        </lightning:recordEditForm>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,39 @@
+<!--
+ - Created by nnoman on 12.07.2022.
+ -->
+
+<!-- Webinar Questionnaire -->
+<template>
+    <template if:true={isStatusCompleted}> <!--The easier and better way to do this would be setting component visibility from app builder when putting this in an app. (Easier and Better because clicks before code.)-->
+        <lightning-card title={title} if:true={isCompleted}>
+            <lightning-spinner variant="brand" if:true={isLoading}></lightning-spinner>
+            <lightning-record-edit-form title object-api-name="Questionnaire__c"
+                                        onchange={handleAllFormFieldChanges}
+                                        onerror={handleError}>
+                <lightning-layout multiple-rows="true" class="slds-p-around_small">
+                    <lightning-layout-item size="12" flexibility="true" >
+                        <lightning-messages></lightning-messages>
+                        <lightning-input-field field-name="Age__c" onchange={handleFieldChanges}></lightning-input-field>
+                        <lightning-input-field field-name="Attendance__c" onchange={handleFieldChanges}></lightning-input-field>
+                        <lightning-input-field field-name="Feedback_Comments__c" onchange={handleFieldChanges}></lightning-input-field>
+                        <lightning-input-field field-name="recommend__c" onchange={handleRecommendFieldChange}></lightning-input-field>
+                        <template if:true={wouldRecommendNo}>
+                            <lightning-input-field field-name="Why__c" onchange={handleFieldChanges}></lightning-input-field>
+                        </template>
+                        <lightning-input-field field-name="Score__c" onchange={handleFieldChanges}></lightning-input-field>
+<!--                        <lightning-input-field field-name="Webinar__c" value={recordId} disabled></lightning-input-field>-->
+                        <lightning-button label="Save" variant="brand" type="button" onclick={handleQuestionnaireSubmission}></lightning-button>
+                        <template if:false={showUserQuestionnaires}>
+                            <lightning-button label="Show my questionnaires" variant="brand-outline"
+                                              class="slds-m-left_xx-small" onclick={handleShowClick}></lightning-button>
+                        </template>
+
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-record-edit-form>
+        </lightning-card>
+        <lightning-card if:true={showUserQuestionnaires} title="My Questionnaires">
+            <c-my-questionnaires-list user-id={userId} onclosebuttonclicked={handleClose}></c-my-questionnaires-list>
+        </lightning-card>
+    </template>
+</template>

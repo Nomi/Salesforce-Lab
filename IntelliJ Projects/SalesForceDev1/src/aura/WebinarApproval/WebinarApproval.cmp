@@ -1,0 +1,27 @@
+<!--
+ - Created by nnoman on 08.07.2022.
+ -->
+
+<aura:component description="WebinarApproval" implements="flexipage:availableForAllPageTypes" controller="WebinarListController" access="public">
+    <!-- Libraries    -->
+    <lightning:notificationsLibrary aura:id="notifLibrary"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+
+    <!-- Public attributes-->
+    <aura:attribute access="public" type="String" name="webinarLimit" default="10"/>
+    <!--
+    Private attributes. These can be accessed in this component only.
+    You can also pass them to child component.
+    -->
+    <aura:attribute access="private" type="Webinar__c[]" name="webinars"/>
+    <aura:attribute access="private" type="Object[]" name="columns"/>
+
+    <!--Handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:WebinarCreated" action="{!c.handleWebinarCreatedEvent}"/>.
+
+    <lightning:card title="Webinars">
+        <lightning:datatable keyField="Id" columns="{!v.columns}" data="{!v.webinars}" onrowaction="{!c.onRowActions}"
+                             showRowNumberColumn="true" hideCheckboxColumn="true"/>
+    </lightning:card>
+</aura:component>

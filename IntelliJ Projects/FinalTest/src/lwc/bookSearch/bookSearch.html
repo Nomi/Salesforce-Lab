@@ -1,0 +1,28 @@
+<!--
+ - Created by nnoman on 22.07.2022.
+ -->
+
+<!-- Book Search -->
+<template>
+    <lightning-card title="Related Orders" icon-name="standard:orders">
+        <div class="slds-align_absolute-center">Search orders by books contained:</div>
+        <div class="slds-grid slds-gutters_xx-small slds-container_center slds-grid_align-center"> <!--slds-gutters-->
+            <div class="slds-col">
+                <lightning-input name="searchInput" placeholder="Enter book name..." variant="label-hidden" value={searchKeyword} onchange={handleChangeSearchKeyword}></lightning-input>
+            </div>
+            <div class="slds-col">
+                <lightning-button label="Search" onclick={handleSearch} variant="brand"></lightning-button>
+            </div>
+        </div>
+        <lightning-datatable key-field="Id"
+                             data={orders}
+                             columns={columns}
+                             hide-checkbox-column="true"
+                             show-row-number-column="true"
+                             sorted-by={sortBy}
+                             sorted-direction={sortDirection}
+                             onsort={handleSortOrderData}
+            >
+        </lightning-datatable>
+    </lightning-card>
+</template>

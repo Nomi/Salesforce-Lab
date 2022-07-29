@@ -1,0 +1,7 @@
+<!--
+ - Created by nnoman on 11.07.2022.
+ -->
+
+<aura:event type="APPLICATION" description="webinarCreatedEvent"/>
+<!--    <aura:attribute type="Id" name="webinarId"/>-->
+<!--</aura:event>-->

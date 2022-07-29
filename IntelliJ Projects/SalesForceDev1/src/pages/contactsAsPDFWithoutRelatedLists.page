@@ -1,0 +1,9 @@
+<!--
+ - Created by nnoman on 08.07.2022.
+ -->
+
+<apex:page id="contactsAsPDFWithoutRelatedLists" standardController="Contact" renderAs="pdf"> <!--lightningStylesheets="true">-->
+<!--    <h1>Contact Details</h1>-->
+    <apex:sectionHeader title="Contact">{!Contact.Name}</apex:sectionHeader>
+    <apex:detail subject="{!Contact.Id}" relatedList="false" inlineEdit="false"/>
+</apex:page>

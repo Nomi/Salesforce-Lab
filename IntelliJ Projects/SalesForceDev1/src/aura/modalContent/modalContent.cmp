@@ -1,0 +1,15 @@
+<!--
+ - Created by nnoman on 11.07.2022.
+ -->
+
+<aura:component description="modalContent">
+<!--    <lightning:icon size="medium" iconName="action:approval" alternativeText="Approved" />-->
+<!--    Your application has been approved.-->
+    <div>
+        <lightning:input name="Rejection Reason:"/>
+        <lightning:buttonGroup>
+            <lightning:button name="Finish" onclick=""/>
+            <lightning:button name="Confirm" onclick=""/>
+        </lightning:buttonGroup>
+    </div>
+</aura:component>

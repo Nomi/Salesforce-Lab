@@ -1,0 +1,38 @@
+<!--
+ - Created by nnoman on 11.07.2022.
+ -->
+
+<aura:component description="WebinarFilter" implements="flexipage:availableForAllPageTypes, force:appHostable" controller="WebinarListController" access="public">
+    <aura:attribute access="private" type="Webinar__c[]" name="webinars"/>
+    <aura:attribute access="private" type="Object[]" name="columns"/>
+
+    <aura:attribute access="private" type="String" name="typeString"/>
+    <aura:attribute access="private" type="String" name="statusString"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:card title="Webinars">
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                        <span><lightning:input label="Type" name="typeFilter" value="{!v.typeString}"/></span>
+<!--                        <span><lightning:input label="Type"/></span>-->
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col">
+                <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col">
+                        <span><lightning:input label="Status" name="statusFilter" value="{!v.statusString}"/></span>
+<!--                        <span><lightning:input label="Status"/></span>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-m-top_medium slds-align_absolute-center" style="margin:2em">
+            <lightning:button type="button" label="Filter" onclick="{!c.onClickFilter}"/>
+        </div>
+        <lightning:datatable keyField="Id" columns="{!v.columns}" data="{!v.webinars}"
+                             showRowNumberColumn="true" hideCheckboxColumn="true"/>
+    </lightning:card>
+</aura:component>

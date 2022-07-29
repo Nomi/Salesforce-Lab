@@ -1,0 +1,7 @@
+<!--
+ - Created by nnoman on 11.07.2022.
+ -->
+
+<apex:page id="WebinarRegistrationPage">
+    <apex:includeLightning/>
+</apex:page>
